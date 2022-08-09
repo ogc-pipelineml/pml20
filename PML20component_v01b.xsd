@@ -1,0 +1,1345 @@
+<?xml version="1.0" encoding="UTF-8"?><schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:gmlexr="http://www.opengis.net/gml/3.3/exr" xmlns:pmlcmp="http://pipelineml.org/pml" elementFormDefault="qualified" targetNamespace="http://pipelineml.org/pml" version="1.0">
+  <annotation>
+    <appinfo>
+      <gmlProfileSchema xmlns="http://www.opengis.net/gml/3.2">http://www.opengis.net/gml/3.3</gmlProfileSchema>
+    </appinfo>
+  </annotation>
+  <import namespace="http://www.opengis.net/gml/3.2" schemaLocation="http://schemas.opengis.net/gml/3.2.1/gml.xsd"/>
+  <import namespace="http://www.opengis.net/gml/3.3/exr" schemaLocation="http://schemas.opengis.net/gml/3.3/extdEncRule.xsd"/>
+  <!--XML Schema document created by ShapeChange - http://shapechange.net/-->
+  <element abstract="true" name="AppurtenantComponent" substitutionGroup="pmlcmp:Component" type="pmlcmp:AppurtenantComponentType"/>
+  <complexType abstract="true" name="AppurtenantComponentType">
+    <complexContent>
+      <extension base="pmlcmp:ComponentType">
+        <sequence>
+          <element name="appurtenanceID" type="gml:CodeType"/>
+          <element name="appurtenanceCode" type="string"/>
+          <element name="appurtenanceLocation" type="gml:GeometryPropertyType"/>
+          <element name="appurtenanceManufactureDate" type="date"/>
+          <element name="appurtenanceInstallDate" type="date"/>
+          <element name="appurtenanceAbandonDate" type="date"/>
+          <element name="appurtenanceRemoveDate" type="date"/>
+          <element name="appurtenanceComment" type="string"/>
+          <element name="appurtenanceStartComponentID" type="gml:CodeType"/>
+          <element name="appurtenanceEndComponentID" type="gml:CodeType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="AppurtenantComponentPropertyType">
+    <sequence minOccurs="0">
+      <element ref="pmlcmp:AppurtenantComponent"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="Assembly" substitutionGroup="gml:AbstractFeature" type="pmlcmp:AssemblyType"/>
+  <complexType name="AssemblyType">
+    <complexContent>
+      <extension base="gml:AbstractFeatureType">
+        <sequence>
+          <element name="assemblyID" type="gml:CodeType"/>
+          <element minOccurs="0" name="assemblyCode" type="string"/>
+          <element minOccurs="0" name="assemblyName" type="string"/>
+          <element minOccurs="0" name="assemblyComment" type="string"/>
+          <element name="assemblySequenceOriginID">
+            <complexType>
+              <complexContent>
+                <extension base="gml:AbstractFeatureMemberType">
+                  <sequence minOccurs="0">
+                    <element ref="pmlcmp:Component"/>
+                  </sequence>
+                  <attributeGroup ref="gml:AssociationAttributeGroup"/>
+                </extension>
+              </complexContent>
+            </complexType>
+          </element>
+          <element minOccurs="0" name="assemblyBoundType" type="gml:ReferenceType">
+            <annotation>
+              <documentation>A bound set of concatenated values (classification; type; sub-type) that collectively defines a given type of assembly.</documentation>
+              <appinfo>
+                <targetCodeList xmlns="http://www.opengis.net/gml/3.3/exr">AssemblyBoundType</targetCodeList>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="assemblyClassification" type="string"/>
+          <element minOccurs="0" name="assemblyType" type="string"/>
+          <element minOccurs="0" name="assemblySubType" type="string"/>
+          <element maxOccurs="unbounded" minOccurs="0" name="component">
+            <complexType>
+              <complexContent>
+                <extension base="gml:AbstractFeatureMemberType">
+                  <sequence minOccurs="0">
+                    <element ref="pmlcmp:Component"/>
+                  </sequence>
+                  <attributeGroup ref="gml:AssociationAttributeGroup"/>
+                </extension>
+              </complexContent>
+            </complexType>
+          </element>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="AssemblyPropertyType">
+    <sequence minOccurs="0">
+      <element ref="pmlcmp:Assembly"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="Cap" substitutionGroup="pmlcmp:ConnectorComponent" type="pmlcmp:CapType"/>
+  <complexType name="CapType">
+    <complexContent>
+      <extension base="pmlcmp:ConnectorComponentType">
+        <sequence>
+          <element minOccurs="0" name="capType" type="gml:ReferenceType">
+            <annotation>
+              <appinfo>
+                <targetCodeList xmlns="http://www.opengis.net/gml/3.3/exr">CapType</targetCodeList>
+              </appinfo>
+            </annotation>
+          </element>
+          <element name="capLength" type="gml:LengthType"/>
+          <element name="capPressureRating" type="gml:MeasureType"/>
+          <element minOccurs="0" name="capManufacturer" type="gml:ReferenceType">
+            <annotation>
+              <appinfo>
+                <targetCodeList xmlns="http://www.opengis.net/gml/3.3/exr">CapManufacturer</targetCodeList>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="capMaterial" type="gml:ReferenceType">
+            <annotation>
+              <appinfo>
+                <targetCodeList xmlns="http://www.opengis.net/gml/3.3/exr">CapMaterial</targetCodeList>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="capBoundSpecification" type="gml:ReferenceType">
+            <annotation>
+              <appinfo>
+                <targetCodeList xmlns="http://www.opengis.net/gml/3.3/exr">CapBoundSpecification</targetCodeList>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="capSpecification" type="string"/>
+          <element minOccurs="0" name="capWeight" type="string"/>
+          <element minOccurs="0" name="capBoundDimension" type="gml:ReferenceType">
+            <annotation>
+              <appinfo>
+                <targetCodeList xmlns="http://www.opengis.net/gml/3.3/exr">CapBoundDimension</targetCodeList>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="capNominalPipeSize" type="string"/>
+          <element minOccurs="0" name="capOutsideDiameter" type="string"/>
+          <element minOccurs="0" name="capWallThickness" type="string"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="CapPropertyType">
+    <sequence minOccurs="0">
+      <element ref="pmlcmp:Cap"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="Casing" substitutionGroup="pmlcmp:AppurtenantComponent" type="pmlcmp:CasingType"/>
+  <complexType name="CasingType">
+    <complexContent>
+      <extension base="pmlcmp:AppurtenantComponentType">
+        <sequence>
+          <element minOccurs="0" name="casingCrossingType" type="gml:ReferenceType">
+            <annotation>
+              <appinfo>
+                <targetCodeList xmlns="http://www.opengis.net/gml/3.3/exr">CasingCrossingType</targetCodeList>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="casingManufacturer" type="gml:ReferenceType">
+            <annotation>
+              <appinfo>
+                <targetCodeList xmlns="http://www.opengis.net/gml/3.3/exr">CasingManufacturer</targetCodeList>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="casingMaterial" type="gml:ReferenceType">
+            <annotation>
+              <appinfo>
+                <targetCodeList xmlns="http://www.opengis.net/gml/3.3/exr">CasingMaterial</targetCodeList>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="casingBoundSpecification" type="gml:ReferenceType">
+            <annotation>
+              <appinfo>
+                <targetCodeList xmlns="http://www.opengis.net/gml/3.3/exr">CasingBoundSpecification</targetCodeList>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="casingSpecification" type="string"/>
+          <element minOccurs="0" name="casingGrade" type="string"/>
+          <element minOccurs="0" name="casingYieldStrength" type="string"/>
+          <element minOccurs="0" name="casingBoundDimension" type="gml:ReferenceType">
+            <annotation>
+              <appinfo>
+                <targetCodeList xmlns="http://www.opengis.net/gml/3.3/exr">CasingBoundDimension</targetCodeList>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="casingNominalPipeSize" type="string"/>
+          <element minOccurs="0" name="casingOutsideDiameter" type="string">
+            <annotation>
+              <appinfo>
+                <targetElement xmlns="http://www.opengis.net/gml/3.2">null:CharacterString</targetElement>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="casingWallThickness" type="string"/>
+          <element minOccurs="0" name="casingAnnulusType" type="gml:ReferenceType">
+            <annotation>
+              <appinfo>
+                <targetCodeList xmlns="http://www.opengis.net/gml/3.3/exr">CasingAnnulusType</targetCodeList>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="casingInsulatorType" type="gml:ReferenceType">
+            <annotation>
+              <appinfo>
+                <targetCodeList xmlns="http://www.opengis.net/gml/3.3/exr">CasingInsulatorType</targetCodeList>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="casingSealType" type="gml:ReferenceType">
+            <annotation>
+              <appinfo>
+                <targetCodeList xmlns="http://www.opengis.net/gml/3.3/exr">CasingSealType</targetCodeList>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="casingVentCount" type="integer"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="CasingPropertyType">
+    <sequence minOccurs="0">
+      <element ref="pmlcmp:Casing"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="Coating" substitutionGroup="pmlcmp:AppurtenantComponent" type="pmlcmp:CoatingType"/>
+  <complexType name="CoatingType">
+    <complexContent>
+      <extension base="pmlcmp:AppurtenantComponentType">
+        <sequence>
+          <element minOccurs="0" name="coatingType" type="gml:ReferenceType">
+            <annotation>
+              <appinfo>
+                <targetCodeList xmlns="http://www.opengis.net/gml/3.3/exr">CoatingType</targetCodeList>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="coatingManufacturer" type="string"/>
+          <element minOccurs="0" name="coatingMaterial" type="gml:ReferenceType">
+            <annotation>
+              <appinfo>
+                <targetCodeList xmlns="http://www.opengis.net/gml/3.3/exr">CoatingMaterial</targetCodeList>
+              </appinfo>
+            </annotation>
+          </element>
+          <element name="coatingMaximumTemperature" type="gml:MeasureType"/>
+          <element minOccurs="0" name="coatingBoundManufacturer" type="gml:ReferenceType">
+            <annotation>
+              <appinfo>
+                <targetCodeList xmlns="http://www.opengis.net/gml/3.3/exr">CoatingBoundManufacturer</targetCodeList>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="coatingProductName" type="string"/>
+          <element minOccurs="0" name="coatingModelNumber" type="string"/>
+          <element minOccurs="0" name="coatingThickness" type="gml:ReferenceType">
+            <annotation>
+              <appinfo>
+                <targetCodeList xmlns="http://www.opengis.net/gml/3.3/exr">CoatingThickness</targetCodeList>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="coatingApplicationLocation" type="gml:ReferenceType">
+            <annotation>
+              <appinfo>
+                <targetCodeList xmlns="http://www.opengis.net/gml/3.3/exr">CoatingApplicationLocation</targetCodeList>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="coatingOverlay" type="gml:ReferenceType">
+            <annotation>
+              <appinfo>
+                <targetCodeList xmlns="http://www.opengis.net/gml/3.3/exr">CoatingOverlay</targetCodeList>
+              </appinfo>
+            </annotation>
+          </element>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="CoatingPropertyType">
+    <sequence minOccurs="0">
+      <element ref="pmlcmp:Coating"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="Collection" substitutionGroup="gml:AbstractFeature" type="pmlcmp:CollectionType"/>
+  <complexType name="CollectionType">
+    <complexContent>
+      <extension base="gml:AbstractFeatureType">
+        <sequence>
+          <element name="collectionID" type="gml:CodeType"/>
+          <element minOccurs="0" name="collectionCode" type="string"/>
+          <element minOccurs="0" name="collectionName" type="string"/>
+          <element minOccurs="0" name="collectionComment" type="string"/>
+          <element name="collectionType" type="string"/>
+          <element name="collectionDescription" type="string"/>
+          <element maxOccurs="unbounded" minOccurs="0" name="collectionMember">
+            <complexType>
+              <complexContent>
+                <extension base="gml:AbstractFeatureMemberType">
+                  <sequence>
+                    <element ref="pmlcmp:CollectionMember"/>
+                  </sequence>
+                </extension>
+              </complexContent>
+            </complexType>
+          </element>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="CollectionPropertyType">
+    <sequence minOccurs="0">
+      <element ref="pmlcmp:Collection"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="CollectionMember" substitutionGroup="gml:AbstractFeature" type="pmlcmp:CollectionMemberType"/>
+  <complexType name="CollectionMemberType">
+    <complexContent>
+      <extension base="gml:AbstractFeatureType">
+        <sequence>
+          <element name="componentID" type="gml:CodeType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="CollectionMemberPropertyType">
+    <sequence minOccurs="0">
+      <element ref="pmlcmp:CollectionMember"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element abstract="true" name="Component" substitutionGroup="gml:AbstractFeature" type="pmlcmp:ComponentType"/>
+  <complexType abstract="true" name="ComponentType">
+    <complexContent>
+      <extension base="gml:AbstractFeatureType">
+        <sequence>
+          <element name="componentID" type="gml:CodeType"/>
+          <element name="componentCode" type="string"/>
+          <element name="componentLocation" type="gml:GeometryPropertyType"/>
+          <element name="componentManufactureDate" type="date"/>
+          <element name="componentInstallDate" type="date"/>
+          <element name="componentAbandonDate" type="date"/>
+          <element name="componentRemoveDate" type="date"/>
+          <element name="componentComment" type="string"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="ComponentPropertyType">
+    <sequence minOccurs="0">
+      <element ref="pmlcmp:Component"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="Compressor" substitutionGroup="pmlcmp:CoterminousComponent" type="pmlcmp:CompressorType"/>
+  <complexType name="CompressorType">
+    <complexContent>
+      <extension base="pmlcmp:CoterminousComponentType">
+        <sequence>
+          <element minOccurs="0" name="compressorManufacturer" type="gml:ReferenceType">
+            <annotation>
+              <appinfo>
+                <targetCodeList xmlns="http://www.opengis.net/gml/3.3/exr">CompressorManufacturer</targetCodeList>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="compressorBoundType" type="gml:ReferenceType">
+            <annotation>
+              <appinfo>
+                <targetCodeList xmlns="http://www.opengis.net/gml/3.3/exr">CompressorBoundType</targetCodeList>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="compressorType" type="string"/>
+          <element minOccurs="0" name="compressorStage" type="string"/>
+          <element minOccurs="0" name="compressorThrow" type="string"/>
+          <element minOccurs="0" name="compressorStroke" type="string"/>
+          <element minOccurs="0" name="compressorNominalPipeSize" type="gml:ReferenceType">
+            <annotation>
+              <appinfo>
+                <targetCodeList xmlns="http://www.opengis.net/gml/3.3/exr">CompressorNominalPipeSize</targetCodeList>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="compressorProductName" type="string"/>
+          <element minOccurs="0" name="compressorModelNumber" type="string"/>
+          <element minOccurs="0" name="compressorSerialNumber" type="string"/>
+          <element minOccurs="0" name="compressorFuelType" type="gml:ReferenceType">
+            <annotation>
+              <appinfo>
+                <targetCodeList xmlns="http://www.opengis.net/gml/3.3/exr">CompressorFuelType</targetCodeList>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="compressorPowerRating" type="gml:MeasureType"/>
+          <element minOccurs="0" name="compressorRatedFlow" type="gml:MeasureType"/>
+          <element minOccurs="0" name="compressorPressureSuction" type="gml:MeasureType"/>
+          <element minOccurs="0" name="compressorPressureDischarge" type="gml:MeasureType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="CompressorPropertyType">
+    <sequence minOccurs="0">
+      <element ref="pmlcmp:Compressor"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element abstract="true" name="ConnectorComponent" substitutionGroup="pmlcmp:Component" type="pmlcmp:ConnectorComponentType"/>
+  <complexType abstract="true" name="ConnectorComponentType">
+    <complexContent>
+      <extension base="pmlcmp:ComponentType">
+        <sequence>
+          <element name="connectorID" type="gml:CodeType"/>
+          <element name="connectorCode" type="string"/>
+          <element name="connectorLocation" type="gml:GeometryPropertyType"/>
+          <element name="connectorManufactureDate" type="date"/>
+          <element name="connectorAbandonDate" type="date"/>
+          <element name="connectorInstallDate" type="date"/>
+          <element name="connectorRemoveDate" type="date"/>
+          <element name="connectorComment" type="string"/>
+          <element name="connectorSurveyMethod" type="gml:ReferenceType">
+            <annotation>
+              <appinfo>
+                <targetCodeList xmlns="http://www.opengis.net/gml/3.3/exr">ComponentSurveyMethod</targetCodeList>
+              </appinfo>
+            </annotation>
+          </element>
+          <element name="connectorElevationNaturalGround" type="gml:MeasureType"/>
+          <element name="connectorElevationCenterOfPipe" type="gml:MeasureType"/>
+          <element name="connectorEngineeringStation" type="double"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="ConnectorComponentPropertyType">
+    <sequence minOccurs="0">
+      <element ref="pmlcmp:ConnectorComponent"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element abstract="true" name="CoterminousComponent" substitutionGroup="pmlcmp:Component" type="pmlcmp:CoterminousComponentType"/>
+  <complexType abstract="true" name="CoterminousComponentType">
+    <complexContent>
+      <extension base="pmlcmp:ComponentType">
+        <sequence>
+          <element name="componentAssemblyID" type="gml:CodeType"/>
+          <element name="componentComponentLength3D" type="gml:MeasureType"/>
+          <element name="componentLength" type="gml:LengthType"/>
+          <element name="componentPressureRating" type="gml:MeasureType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="CoterminousComponentPropertyType">
+    <sequence minOccurs="0">
+      <element ref="pmlcmp:CoterminousComponent"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="Coupling" substitutionGroup="pmlcmp:ConnectorComponent" type="pmlcmp:CouplingType"/>
+  <complexType name="CouplingType">
+    <complexContent>
+      <extension base="pmlcmp:ConnectorComponentType">
+        <sequence>
+          <element name="couplingType" type="gml:ReferenceType">
+            <annotation>
+              <appinfo>
+                <targetCodeList xmlns="http://www.opengis.net/gml/3.3/exr">CouplingType</targetCodeList>
+              </appinfo>
+            </annotation>
+          </element>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="CouplingPropertyType">
+    <sequence minOccurs="0">
+      <element ref="pmlcmp:Coupling"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="Dataset" substitutionGroup="gml:AbstractGML" type="pmlcmp:DatasetType"/>
+  <complexType name="DatasetType">
+    <complexContent>
+      <extension base="gml:AbstractGMLType">
+        <sequence>
+          <element name="datasetID" type="gml:CodeType"/>
+          <element minOccurs="0" name="datasetCode" type="string"/>
+          <element minOccurs="0" name="datasetName" type="string"/>
+          <element minOccurs="0" name="datasetComment" type="string"/>
+          <element name="datasetDateTime" type="dateTime"/>
+          <element minOccurs="0" name="datasetVersion" type="string"/>
+          <element minOccurs="0" name="datasetApplication" type="string"/>
+          <element minOccurs="0" name="datasetAuthor" type="string"/>
+          <element name="datasetPMLVersion" type="string"/>
+          <element minOccurs="0" name="datasetLanguage" type="string"/>
+          <element name="datasetDefaultCRS" type="string"/>
+          <element maxOccurs="unbounded" minOccurs="0" name="pipeline">
+            <complexType>
+              <complexContent>
+                <extension base="gml:AbstractFeatureMemberType">
+                  <sequence>
+                    <element ref="pmlcmp:Pipeline"/>
+                  </sequence>
+                </extension>
+              </complexContent>
+            </complexType>
+          </element>
+          <element maxOccurs="unbounded" minOccurs="0" name="component">
+            <complexType>
+              <complexContent>
+                <extension base="gml:AbstractFeatureMemberType">
+                  <sequence minOccurs="0">
+                    <element ref="pmlcmp:Component"/>
+                  </sequence>
+                  <attributeGroup ref="gml:AssociationAttributeGroup"/>
+                </extension>
+              </complexContent>
+            </complexType>
+          </element>
+          <element maxOccurs="unbounded" minOccurs="0" name="collection">
+            <complexType>
+              <complexContent>
+                <extension base="gml:AbstractFeatureMemberType">
+                  <sequence minOccurs="0">
+                    <element ref="pmlcmp:Collection"/>
+                  </sequence>
+                  <attributeGroup ref="gml:AssociationAttributeGroup"/>
+                </extension>
+              </complexContent>
+            </complexType>
+          </element>
+          <element maxOccurs="unbounded" minOccurs="0" name="assembly">
+            <complexType>
+              <complexContent>
+                <extension base="gml:AbstractFeatureMemberType">
+                  <sequence minOccurs="0">
+                    <element ref="pmlcmp:Assembly"/>
+                  </sequence>
+                  <attributeGroup ref="gml:AssociationAttributeGroup"/>
+                </extension>
+              </complexContent>
+            </complexType>
+          </element>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="DatasetPropertyType">
+    <sequence minOccurs="0">
+      <element ref="pmlcmp:Dataset"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="DateTime" substitutionGroup="gml:AbstractObject" type="pmlcmp:DateTimeType"/>
+  <complexType name="DateTimeType">
+    <sequence>
+      <element name="DateTime" type="dateTime"/>
+      <element minOccurs="0" name="UTC" type="string"/>
+    </sequence>
+  </complexType>
+  <complexType name="DateTimePropertyType">
+    <sequence>
+      <element ref="pmlcmp:DateTime"/>
+    </sequence>
+  </complexType>
+  <element name="Elbow" substitutionGroup="pmlcmp:CoterminousComponent" type="pmlcmp:ElbowType"/>
+  <complexType name="ElbowType">
+    <complexContent>
+      <extension base="pmlcmp:CoterminousComponentType">
+        <sequence>
+          <element minOccurs="0" name="elbowManufacturer" type="gml:ReferenceType">
+            <annotation>
+              <appinfo>
+                <targetCodeList xmlns="http://www.opengis.net/gml/3.3/exr">ElbowManufacturer</targetCodeList>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="elbowMaterial" type="gml:ReferenceType">
+            <annotation>
+              <appinfo>
+                <targetCodeList xmlns="http://www.opengis.net/gml/3.3/exr">ElbowMaterial</targetCodeList>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="elbowBoundSpecification" type="gml:ReferenceType">
+            <annotation>
+              <appinfo>
+                <targetCodeList xmlns="http://www.opengis.net/gml/3.3/exr">ElbowBoundSpecification</targetCodeList>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="elbowSpecification" type="string"/>
+          <element minOccurs="0" name="elbowWeight" type="string"/>
+          <element minOccurs="0" name="elbowType" type="gml:ReferenceType">
+            <annotation>
+              <appinfo>
+                <targetCodeList xmlns="http://www.opengis.net/gml/3.3/exr">ElbowType</targetCodeList>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="elbowBoundDimension" type="gml:ReferenceType">
+            <annotation>
+              <appinfo>
+                <targetCodeList xmlns="http://www.opengis.net/gml/3.3/exr">ElbowBoundDimension</targetCodeList>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="elbowAngle" type="string"/>
+          <element minOccurs="0" name="elbowNominalPipeSize" type="string"/>
+          <element minOccurs="0" name="elbowOutsideDiameter" type="string"/>
+          <element minOccurs="0" name="elbowWallThickness" type="string"/>
+          <element name="elbowBendOrientationType" type="gml:ReferenceType">
+            <annotation>
+              <appinfo>
+                <targetCodeList xmlns="http://www.opengis.net/gml/3.3/exr">ElbowBendOrientationType</targetCodeList>
+              </appinfo>
+            </annotation>
+          </element>
+          <element name="elbowSegmentedAngle" type="gml:MeasureType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="ElbowPropertyType">
+    <sequence minOccurs="0">
+      <element ref="pmlcmp:Elbow"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="Flange" substitutionGroup="pmlcmp:ConnectorComponent" type="pmlcmp:FlangeType"/>
+  <complexType name="FlangeType">
+    <complexContent>
+      <extension base="pmlcmp:ConnectorComponentType">
+        <sequence>
+          <element minOccurs="0" name="flangeMaterial" type="gml:ReferenceType">
+            <annotation>
+              <appinfo>
+                <targetCodeList xmlns="http://www.opengis.net/gml/3.3/exr">FlangeMaterial</targetCodeList>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="flangeBoundSpecification" type="gml:ReferenceType">
+            <annotation>
+              <appinfo>
+                <targetCodeList xmlns="http://www.opengis.net/gml/3.3/exr">FlangeBoundSpecification</targetCodeList>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="flangeClass" type="string"/>
+          <element minOccurs="0" name="flangeType" type="string"/>
+          <element name="flangeLength" type="gml:LengthType"/>
+          <element minOccurs="0" name="flangeManufacturer" type="gml:ReferenceType">
+            <annotation>
+              <appinfo>
+                <targetCodeList xmlns="http://www.opengis.net/gml/3.3/exr">FlangeManufacturer</targetCodeList>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="flangeSpecification" type="string"/>
+          <element minOccurs="0" name="flangeNominalPipeSize" type="gml:ReferenceType">
+            <annotation>
+              <appinfo>
+                <targetCodeList xmlns="http://www.opengis.net/gml/3.3/exr">FlangeNominalPipeSize</targetCodeList>
+              </appinfo>
+            </annotation>
+          </element>
+          <element name="flangePressureRating" type="gml:MeasureType"/>
+          <element minOccurs="0" name="flangeInsulationType" type="gml:ReferenceType">
+            <annotation>
+              <appinfo>
+                <targetCodeList xmlns="http://www.opengis.net/gml/3.3/exr">FlangeInsulationType</targetCodeList>
+              </appinfo>
+            </annotation>
+          </element>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="FlangePropertyType">
+    <sequence minOccurs="0">
+      <element ref="pmlcmp:Flange"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="Girthweld" substitutionGroup="pmlcmp:ConnectorComponent" type="pmlcmp:GirthweldType"/>
+  <complexType name="GirthweldType">
+    <complexContent>
+      <extension base="pmlcmp:ConnectorComponentType">
+        <sequence>
+          <element name="girthweldType" type="gml:ReferenceType">
+            <annotation>
+              <appinfo>
+                <targetCodeList xmlns="http://www.opengis.net/gml/3.3/exr">GirthweldType</targetCodeList>
+              </appinfo>
+            </annotation>
+          </element>
+          <element name="girthweldNumber" type="string"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="GirthweldPropertyType">
+    <sequence minOccurs="0">
+      <element ref="pmlcmp:Girthweld"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="Launcher" substitutionGroup="pmlcmp:CoterminousComponent" type="pmlcmp:LauncherType"/>
+  <complexType name="LauncherType">
+    <complexContent>
+      <extension base="pmlcmp:CoterminousComponentType">
+        <sequence>
+          <element minOccurs="0" name="launcherManufacturer" type="gml:ReferenceType">
+            <annotation>
+              <appinfo>
+                <targetCodeList xmlns="http://www.opengis.net/gml/3.3/exr">LauncherManufacturer</targetCodeList>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="launcherType" type="gml:ReferenceType">
+            <annotation>
+              <appinfo>
+                <targetCodeList xmlns="http://www.opengis.net/gml/3.3/exr">LauncherType</targetCodeList>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="launcherNominalPipeSize" type="gml:ReferenceType">
+            <annotation>
+              <appinfo>
+                <targetCodeList xmlns="http://www.opengis.net/gml/3.3/exr">LauncherNominalPipeSize</targetCodeList>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="launcherProductName" type="string"/>
+          <element minOccurs="0" name="launcherModelNumber" type="string"/>
+          <element minOccurs="0" name="launcherSerialNumber" type="string"/>
+          <element minOccurs="0" name="launcherName" type="string"/>
+          <element minOccurs="0" name="launcherClass" type="gml:ReferenceType">
+            <annotation>
+              <appinfo>
+                <targetCodeList xmlns="http://www.opengis.net/gml/3.3/exr">LauncherClass</targetCodeList>
+              </appinfo>
+            </annotation>
+          </element>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="LauncherPropertyType">
+    <sequence minOccurs="0">
+      <element ref="pmlcmp:Launcher"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="Linepipe" substitutionGroup="pmlcmp:CoterminousComponent" type="pmlcmp:LinepipeType"/>
+  <complexType name="LinepipeType">
+    <complexContent>
+      <extension base="pmlcmp:CoterminousComponentType">
+        <sequence>
+          <element minOccurs="0" name="linepipeManufacturer" type="gml:ReferenceType">
+            <annotation>
+              <appinfo>
+                <targetCodeList xmlns="http://www.opengis.net/gml/3.3/exr">LinepipeManufacturer</targetCodeList>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="linepipeMaterial" type="gml:ReferenceType">
+            <annotation>
+              <appinfo>
+                <targetCodeList xmlns="http://www.opengis.net/gml/3.3/exr">LinepipeMaterial</targetCodeList>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="linepipeSpecification" type="string"/>
+          <element minOccurs="0" name="linepipeBoundSpecification" type="gml:ReferenceType">
+            <annotation>
+              <appinfo>
+                <targetCodeList xmlns="http://www.opengis.net/gml/3.3/exr">LinepipeBoundSpecification</targetCodeList>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="linepipeGrade" type="string"/>
+          <element minOccurs="0" name="linepipeYieldStrength" type="string"/>
+          <element minOccurs="0" name="linepipeType" type="gml:ReferenceType">
+            <annotation>
+              <appinfo>
+                <targetCodeList xmlns="http://www.opengis.net/gml/3.3/exr">LinepipeType</targetCodeList>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="linepipeBoundDimension" type="gml:ReferenceType">
+            <annotation>
+              <appinfo>
+                <targetCodeList xmlns="http://www.opengis.net/gml/3.3/exr">LinepipeBoundDimension</targetCodeList>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="linepipeNominalPipeSize" type="string"/>
+          <element minOccurs="0" name="linepipeOutsideDiameter" type="string"/>
+          <element minOccurs="0" name="linepipeWallThickness" type="string"/>
+          <element name="linepipeBendOrientationType" type="gml:ReferenceType">
+            <annotation>
+              <appinfo>
+                <targetCodeList xmlns="http://www.opengis.net/gml/3.3/exr">LinepipeBendOrientationType</targetCodeList>
+              </appinfo>
+            </annotation>
+          </element>
+          <element name="linepipeBendAngle" type="gml:MeasureType"/>
+          <element minOccurs="0" name="linepipeBendType" type="gml:ReferenceType">
+            <annotation>
+              <appinfo>
+                <targetCodeList xmlns="http://www.opengis.net/gml/3.3/exr">LinepipeBendType</targetCodeList>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="linepipeSeamWeldType" type="gml:ReferenceType">
+            <annotation>
+              <appinfo>
+                <targetCodeList xmlns="http://www.opengis.net/gml/3.3/exr">LinepipeSeamWeldType</targetCodeList>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="linepipeSeamWeldOrientation" type="pmlcmp:LinepipeSeamWeldOrientationTypePropertyType"/>
+          <element minOccurs="0" name="linepipeCoverDepthMinimum" type="gml:MeasureType"/>
+          <element minOccurs="0" name="linepipeWallThicknessTransition" type="gml:MeasureType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="LinepipePropertyType">
+    <sequence minOccurs="0">
+      <element ref="pmlcmp:Linepipe"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="LinepipeSeamWeldOrientationType" substitutionGroup="gml:AbstractObject" type="pmlcmp:LinepipeSeamWeldOrientationTypeType"/>
+  <complexType name="LinepipeSeamWeldOrientationTypeType">
+    <sequence>
+      <element name="OrientationAngle" type="gml:ReferenceType">
+        <annotation>
+          <appinfo>
+            <targetCodeList xmlns="http://www.opengis.net/gml/3.3/exr">LinepipeSeamWeldOrientation</targetCodeList>
+          </appinfo>
+        </annotation>
+      </element>
+      <element name="ComponentMeasuredFrom" type="gml:CodeType"/>
+    </sequence>
+  </complexType>
+  <complexType name="LinepipeSeamWeldOrientationTypePropertyType">
+    <sequence>
+      <element ref="pmlcmp:LinepipeSeamWeldOrientationType"/>
+    </sequence>
+  </complexType>
+  <element name="ManufacturerType" substitutionGroup="gml:AbstractObject" type="pmlcmp:ManufacturerTypeType"/>
+  <complexType name="ManufacturerTypeType">
+    <sequence>
+      <element name="id" type="gml:CodeType"/>
+      <element minOccurs="0" name="other" type="string"/>
+    </sequence>
+  </complexType>
+  <complexType name="ManufacturerTypePropertyType">
+    <sequence>
+      <element ref="pmlcmp:ManufacturerType"/>
+    </sequence>
+  </complexType>
+  <element name="Meter" substitutionGroup="pmlcmp:CoterminousComponent" type="pmlcmp:MeterType"/>
+  <complexType name="MeterType">
+    <complexContent>
+      <extension base="pmlcmp:CoterminousComponentType">
+        <sequence>
+          <element minOccurs="0" name="meterManufacturer" type="gml:ReferenceType">
+            <annotation>
+              <appinfo>
+                <targetCodeList xmlns="http://www.opengis.net/gml/3.3/exr">MeterManufacturer</targetCodeList>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="meterNumber" type="string"/>
+          <element minOccurs="0" name="meterType" type="gml:ReferenceType">
+            <annotation>
+              <appinfo>
+                <targetCodeList xmlns="http://www.opengis.net/gml/3.3/exr">MeterType</targetCodeList>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="meterNominalPipeSize" type="gml:ReferenceType">
+            <annotation>
+              <appinfo>
+                <targetCodeList xmlns="http://www.opengis.net/gml/3.3/exr">MeterNominalPipeSize</targetCodeList>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="meterProductName" type="string"/>
+          <element minOccurs="0" name="meterModelNumber" type="string"/>
+          <element minOccurs="0" name="meterSerialNumber" type="string"/>
+          <element minOccurs="0" name="meterFlowRateMinimum" type="gml:MeasureType"/>
+          <element minOccurs="0" name="meterFlowRateMaximum" type="gml:MeasureType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="MeterPropertyType">
+    <sequence minOccurs="0">
+      <element ref="pmlcmp:Meter"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="ModelNumberType" substitutionGroup="gml:AbstractObject" type="pmlcmp:ModelNumberTypeType"/>
+  <complexType name="ModelNumberTypeType">
+    <sequence>
+      <element name="id" type="gml:CodeType"/>
+      <element minOccurs="0" name="other" type="string"/>
+    </sequence>
+  </complexType>
+  <complexType name="ModelNumberTypePropertyType">
+    <sequence>
+      <element ref="pmlcmp:ModelNumberType"/>
+    </sequence>
+  </complexType>
+  <element name="Pipeline" substitutionGroup="gml:AbstractFeature" type="pmlcmp:PipelineType"/>
+  <complexType name="PipelineType">
+    <complexContent>
+      <extension base="gml:AbstractFeatureType">
+        <sequence>
+          <element name="pipelineID" type="gml:CodeType"/>
+          <element minOccurs="0" name="pipelineCode" type="string"/>
+          <element minOccurs="0" name="pipelineName" type="string"/>
+          <element minOccurs="0" name="pipelineComment" type="string"/>
+          <element minOccurs="0" name="pipelineNumber" type="string"/>
+          <element maxOccurs="unbounded" name="assembly">
+            <complexType>
+              <complexContent>
+                <extension base="gml:AbstractFeatureMemberType">
+                  <sequence>
+                    <element ref="pmlcmp:Assembly"/>
+                  </sequence>
+                </extension>
+              </complexContent>
+            </complexType>
+          </element>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="PipelinePropertyType">
+    <sequence minOccurs="0">
+      <element ref="pmlcmp:Pipeline"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="ProductNameType" substitutionGroup="gml:AbstractObject" type="pmlcmp:ProductNameTypeType"/>
+  <complexType name="ProductNameTypeType">
+    <sequence>
+      <element name="id" type="gml:CodeType"/>
+      <element minOccurs="0" name="other" type="string"/>
+    </sequence>
+  </complexType>
+  <complexType name="ProductNameTypePropertyType">
+    <sequence>
+      <element ref="pmlcmp:ProductNameType"/>
+    </sequence>
+  </complexType>
+  <element name="Pump" substitutionGroup="pmlcmp:CoterminousComponent" type="pmlcmp:PumpType"/>
+  <complexType name="PumpType">
+    <complexContent>
+      <extension base="pmlcmp:CoterminousComponentType">
+        <sequence>
+          <element minOccurs="0" name="pumpManufacturer" type="gml:ReferenceType">
+            <annotation>
+              <appinfo>
+                <targetCodeList xmlns="http://www.opengis.net/gml/3.3/exr">PumpManufacturer</targetCodeList>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="pumpType" type="gml:ReferenceType">
+            <annotation>
+              <appinfo>
+                <targetCodeList xmlns="http://www.opengis.net/gml/3.3/exr">PumpType</targetCodeList>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="pumpBoundDimension" type="gml:ReferenceType">
+            <annotation>
+              <appinfo>
+                <targetCodeList xmlns="http://www.opengis.net/gml/3.3/exr">PumpBoundDimension</targetCodeList>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="pumpDiameterOutlet" type="string"/>
+          <element minOccurs="0" name="pumpDiameterInlet" type="string"/>
+          <element minOccurs="0" name="pumpDiameterImpeller" type="string"/>
+          <element name="pumpProductName" type="string"/>
+          <element name="pumpModelNumber" type="string"/>
+          <element name="pumpNominalPipeSize" type="gml:ReferenceType">
+            <annotation>
+              <appinfo>
+                <targetCodeList xmlns="http://www.opengis.net/gml/3.3/exr">PumpNominalPipeSize</targetCodeList>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="pumpSerialNumber" type="string"/>
+          <element minOccurs="0" name="pumpFuelType" type="gml:ReferenceType">
+            <annotation>
+              <appinfo>
+                <targetCodeList xmlns="http://www.opengis.net/gml/3.3/exr">PumpFuelType</targetCodeList>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="pumpPowerRating" type="gml:MeasureType"/>
+          <element minOccurs="0" name="pumpRatedFlow" type="gml:MeasureType"/>
+          <element minOccurs="0" name="pumpPressureSuction" type="gml:MeasureType"/>
+          <element minOccurs="0" name="pumpPressureDischarge" type="gml:MeasureType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="PumpPropertyType">
+    <sequence minOccurs="0">
+      <element ref="pmlcmp:Pump"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="Reducer" substitutionGroup="pmlcmp:CoterminousComponent" type="pmlcmp:ReducerType"/>
+  <complexType name="ReducerType">
+    <complexContent>
+      <extension base="pmlcmp:CoterminousComponentType">
+        <sequence>
+          <element minOccurs="0" name="reducerManufacturer" type="gml:ReferenceType">
+            <annotation>
+              <appinfo>
+                <targetCodeList xmlns="http://www.opengis.net/gml/3.3/exr">ReducerManufacturer</targetCodeList>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="reducerMaterial" type="gml:ReferenceType">
+            <annotation>
+              <appinfo>
+                <targetCodeList xmlns="http://www.opengis.net/gml/3.3/exr">ReducerMaterial</targetCodeList>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="reducerBoundSpecification" type="gml:ReferenceType">
+            <annotation>
+              <appinfo>
+                <targetCodeList xmlns="http://www.opengis.net/gml/3.3/exr">ReducerBoundSpecification</targetCodeList>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="reducerSpecification" type="string"/>
+          <element minOccurs="0" name="reducerWeight" type="string"/>
+          <element minOccurs="0" name="reducerType" type="gml:ReferenceType">
+            <annotation>
+              <appinfo>
+                <targetCodeList xmlns="http://www.opengis.net/gml/3.3/exr">ReducerType</targetCodeList>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="reducerBoundDimension" type="gml:ReferenceType">
+            <annotation>
+              <appinfo>
+                <targetCodeList xmlns="http://www.opengis.net/gml/3.3/exr">ReducerBoundDimension</targetCodeList>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="reducerNominalPipeSizeInlet" type="string"/>
+          <element minOccurs="0" name="reducerNominalPipeSizeOutlet" type="string"/>
+          <element minOccurs="0" name="reducerOutsideDiameterInlet" type="string"/>
+          <element minOccurs="0" name="reducerOutsideDiameterOutlet" type="string"/>
+          <element minOccurs="0" name="reducerWallThicknessInlet" type="string"/>
+          <element minOccurs="0" name="reducerWallThicknessOutlet" type="string"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="ReducerPropertyType">
+    <sequence minOccurs="0">
+      <element ref="pmlcmp:Reducer"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="Sleeve" substitutionGroup="pmlcmp:AppurtenantComponent" type="pmlcmp:SleeveType"/>
+  <complexType name="SleeveType">
+    <complexContent>
+      <extension base="pmlcmp:AppurtenantComponentType">
+        <sequence>
+          <element name="sleeveLength" type="gml:MeasureType"/>
+          <element minOccurs="0" name="sleeveType" type="gml:ReferenceType">
+            <annotation>
+              <appinfo>
+                <targetCodeList xmlns="http://www.opengis.net/gml/3.3/exr">SleeveType</targetCodeList>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="sleeveManufacturer" type="gml:ReferenceType">
+            <annotation>
+              <appinfo>
+                <targetCodeList xmlns="http://www.opengis.net/gml/3.3/exr">SleeveManufacturer</targetCodeList>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="sleeveMaterial" type="gml:ReferenceType">
+            <annotation>
+              <appinfo>
+                <targetCodeList xmlns="http://www.opengis.net/gml/3.3/exr">SleeveMaterial</targetCodeList>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="sleeveBoundDimension" type="gml:ReferenceType">
+            <annotation>
+              <appinfo>
+                <targetCodeList xmlns="http://www.opengis.net/gml/3.3/exr">SleeveBoundDimension</targetCodeList>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="sleeveNominalPipeSize" type="string"/>
+          <element minOccurs="0" name="sleeveWallThickness" type="string"/>
+          <element minOccurs="0" name="sleevePressureRating" type="gml:MeasureType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="SleevePropertyType">
+    <sequence minOccurs="0">
+      <element ref="pmlcmp:Sleeve"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="SpatialRepresentation" substitutionGroup="gml:AbstractObject" type="pmlcmp:SpatialRepresentationType"/>
+  <complexType name="SpatialRepresentationType">
+    <sequence>
+      <element minOccurs="0" name="name" type="string"/>
+      <element minOccurs="0" name="description" type="string"/>
+    </sequence>
+  </complexType>
+  <complexType name="SpatialRepresentationPropertyType">
+    <sequence>
+      <element ref="pmlcmp:SpatialRepresentation"/>
+    </sequence>
+  </complexType>
+  <element name="Tap" substitutionGroup="pmlcmp:ConnectorComponent" type="pmlcmp:TapType"/>
+  <complexType name="TapType">
+    <complexContent>
+      <extension base="pmlcmp:ConnectorComponentType">
+        <sequence>
+          <element name="tapLength" type="gml:LengthType"/>
+          <element minOccurs="0" name="tapType" type="gml:ReferenceType">
+            <annotation>
+              <appinfo>
+                <targetCodeList xmlns="http://www.opengis.net/gml/3.3/exr">TapType</targetCodeList>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="tapManufacturer" type="gml:ReferenceType">
+            <annotation>
+              <appinfo>
+                <targetCodeList xmlns="http://www.opengis.net/gml/3.3/exr">TapManufacturer</targetCodeList>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="tapMaterial" type="gml:ReferenceType">
+            <annotation>
+              <appinfo>
+                <targetCodeList xmlns="http://www.opengis.net/gml/3.3/exr">TapMaterial</targetCodeList>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="tapBoundDimension" type="gml:ReferenceType">
+            <annotation>
+              <appinfo>
+                <targetCodeList xmlns="http://www.opengis.net/gml/3.3/exr">TapBoundDimension</targetCodeList>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="tapNominalPipeSize" type="string"/>
+          <element minOccurs="0" name="tapInsideDiameterInlet" type="string"/>
+          <element minOccurs="0" name="tapOutsideDiameterOutlet" type="string"/>
+          <element name="tapPressureRating" type="gml:MeasureType"/>
+          <element minOccurs="0" name="tapFunction" type="gml:ReferenceType">
+            <annotation>
+              <appinfo>
+                <targetCodeList xmlns="http://www.opengis.net/gml/3.3/exr">TapFunction</targetCodeList>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="tapInstallMethod" type="gml:ReferenceType">
+            <annotation>
+              <appinfo>
+                <targetCodeList xmlns="http://www.opengis.net/gml/3.3/exr">TapInstallMethod</targetCodeList>
+              </appinfo>
+            </annotation>
+          </element>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="TapPropertyType">
+    <sequence minOccurs="0">
+      <element ref="pmlcmp:Tap"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="Tee" substitutionGroup="pmlcmp:CoterminousComponent" type="pmlcmp:TeeType"/>
+  <complexType name="TeeType">
+    <complexContent>
+      <extension base="pmlcmp:CoterminousComponentType">
+        <sequence>
+          <element minOccurs="0" name="teeManufacturer" type="gml:ReferenceType">
+            <annotation>
+              <appinfo>
+                <targetCodeList xmlns="http://www.opengis.net/gml/3.3/exr">TeeManufacturer</targetCodeList>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="teeMaterial" type="gml:ReferenceType">
+            <annotation>
+              <appinfo>
+                <targetCodeList xmlns="http://www.opengis.net/gml/3.3/exr">TeeMaterial</targetCodeList>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="teeBoundType" type="gml:ReferenceType">
+            <annotation>
+              <appinfo>
+                <targetCodeList xmlns="http://www.opengis.net/gml/3.3/exr">TeeBoundType</targetCodeList>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="teeType" type="string"/>
+          <element name="teeNominalDimension" type="string"/>
+          <element name="teeSchedule" type="string"/>
+          <element name="teeNominaPipeSizeRun" type="string"/>
+          <element minOccurs="0" name="teeOutsideDiameterRun" type="string"/>
+          <element minOccurs="0" name="teeWallThicknessRun" type="string"/>
+          <element name="teeNominalPipeSizeOutlet" type="string"/>
+          <element minOccurs="0" name="teeOutsideDiameterOutlet" type="string"/>
+          <element minOccurs="0" name="teeWallThicknessOutlet" type="string"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="TeePropertyType">
+    <sequence minOccurs="0">
+      <element ref="pmlcmp:Tee"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+  <element name="Valve" substitutionGroup="pmlcmp:CoterminousComponent" type="pmlcmp:ValveType"/>
+  <complexType name="ValveType">
+    <complexContent>
+      <extension base="pmlcmp:CoterminousComponentType">
+        <sequence>
+          <element minOccurs="0" name="valveManufacturer" type="gml:ReferenceType">
+            <annotation>
+              <appinfo>
+                <targetCodeList xmlns="http://www.opengis.net/gml/3.3/exr">ValveManufacturer</targetCodeList>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="valveBoundSpecification" type="gml:ReferenceType">
+            <annotation>
+              <appinfo>
+                <targetCodeList xmlns="http://www.opengis.net/gml/3.3/exr">ValveBoundSpecification</targetCodeList>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="valveSpecification" type="string"/>
+          <element minOccurs="0" name="valveClass" type="string"/>
+          <element minOccurs="0" name="valveType" type="gml:ReferenceType">
+            <annotation>
+              <appinfo>
+                <targetCodeList xmlns="http://www.opengis.net/gml/3.3/exr">ValveType</targetCodeList>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="valveNominalPipeSize" type="gml:ReferenceType">
+            <annotation>
+              <appinfo>
+                <targetCodeList xmlns="http://www.opengis.net/gml/3.3/exr">ValveNominalPipeSize</targetCodeList>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="valveOperability" type="gml:ReferenceType">
+            <annotation>
+              <appinfo>
+                <targetCodeList xmlns="http://www.opengis.net/gml/3.3/exr">ValveOperability</targetCodeList>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="valveActuationTime" type="gml:MeasureType"/>
+          <element minOccurs="0" name="valveFunctionType" type="gml:ReferenceType">
+            <annotation>
+              <appinfo>
+                <targetCodeList xmlns="http://www.opengis.net/gml/3.3/exr">ValveFunctionType</targetCodeList>
+              </appinfo>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="valveNumber" type="string"/>
+          <element minOccurs="0" name="valveModelNumber" type="string"/>
+          <element minOccurs="0" name="valveSerialNumber" type="string"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="ValvePropertyType">
+    <sequence minOccurs="0">
+      <element ref="pmlcmp:Valve"/>
+    </sequence>
+    <attributeGroup ref="gml:AssociationAttributeGroup"/>
+    <attributeGroup ref="gml:OwnershipAttributeGroup"/>
+  </complexType>
+</schema>
